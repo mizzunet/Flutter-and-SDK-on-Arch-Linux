@@ -1,5 +1,5 @@
 # Install Flutter and Android SDK on Arch Linux
-## Install Flutter
+## 1. Install Flutter
 Use the AUR for installing Flutter:
 ```
 yay -S flutter
@@ -21,7 +21,7 @@ If you still get permission denied errors, you can also change the permissions o
 sudo chown -R $USER:flutterusers /opt/flutter
 ```
 
-## Install Android SDK and Tools
+## 2. Install Android SDK and Tools
 While we can avoid installing the heavy Android Studio program, we still need the SDK Manager.
 
 You can install the SDK Manager command line tool as a standalone package. We also need the platform tools for the Android emulator and an SDK platform.
@@ -61,7 +61,7 @@ or
 set -Ux ANDROID_SDK_ROOT /opt/android-sdk
 ```
 
-## Android Emulator
+## 3. Android Emulator (optional)
 First, you’ll need to install the required Android image with sdkmanager:
 ```
 sdkmanager --list
@@ -107,17 +107,18 @@ It seems like sdkmanager adds some paths automatically. Make sure to check your 
 For example, the error “PANIC: Missing emulator engine program for ‘x86’ CPUS.” indicates that the emulator program is not in your path.
 
 In fish, you can check your path variables like this:
-
+```
 echo $fish_user_paths | tr " " "\n" | nl
 echo $PATH | tr " " "\n" | nl
-In Bash, there is no $fish_user_path but the second command should work, too.
+```
+In Bash, there is no `$fish_user_path` but the second command should work, too.
 
-Run Android Emulator
-emulator @<name-of-the-generated-avd>
-Run Flutter
-First, let’s check if you have accepted all licenses: flutter doctor --android-licenses.
+* Run Android Emulator
+`emulator @<name-of-the-generated-avd>`
+* Run Flutter
+First, let’s check if you have accepted all licenses: `flutter doctor --android-licenses`.
 
-Then run flutter doctor -v.
+Then run `flutter doctor -v`.
 
 Ideally, everything should work except Android Studio.
 
